@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -27,6 +28,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 const Login = () => {
+  const router = useRouter();
+
   // Defining your form with useForm
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -56,9 +59,10 @@ const Login = () => {
       const responseData = await response.json();
 
       if (response.ok) {
-        // localStorage.setItem("token", responseData.authToken);
         // Navigate to the Landing Page
         console.log("Logged in Successfully!");
+        localStorage.setItem("userId", responseData.userId);
+        return router.push(`/`, { scroll: false });
       } else {
         // Handle server error messages
         // console.error("Error:", responseData.error);

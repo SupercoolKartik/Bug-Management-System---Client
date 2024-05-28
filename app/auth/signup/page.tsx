@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,6 +50,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const Signup = () => {
+  const router = useRouter();
   // Define your form with useForm
   const form = useForm({
     resolver: zodResolver(signupFormSchema),
@@ -96,8 +98,10 @@ const Signup = () => {
 
       //PUSH USER TO THE LANDING PAGE
 
-      const data = await response.json();
-      console.log("Signup successful:", data);
+      const responseData = await response.json();
+      console.log("Signup successful:", responseData);
+      localStorage.setItem("userId", responseData.userId);
+      return router.push(`/`, { scroll: false });
       // Handle success (e.g., show a success message, redirect to login page, etc.)
     } catch (error) {
       console.error("Signup failed:", error);
