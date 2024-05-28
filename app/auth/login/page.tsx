@@ -37,16 +37,44 @@ const Login = () => {
   });
 
   // Defining the submit handler
-  const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
-    // Do something with the form values
-    // This will be type-safe and validated
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof loginFormSchema>) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_DEPLOYED_BACKEND_URI}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+          }),
+        }
+      );
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        // localStorage.setItem("token", responseData.authToken);
+        // Navigate to the Landing Page
+        console.log("Logged in Successfully!");
+      } else {
+        // Handle server error messages
+        // console.error("Error:", responseData.error);
+        throw new Error(responseData.error || "Unknown error occurred");
+      }
+    } catch (error: any) {
+      console.error("Error:", error.message); // It will catch the error thrown above iff any
+    }
   };
   return (
-    <div className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
-      <div className="bg-gray-100 rounded-lg p-7 flex flex-col mt-10 md:mt-0">
+    <div className="h-screen container mx-auto flex flex-wrap flex-col items-center justify-center">
+      <h1 className="font-bold absolute top-2">Bug Management System</h1>
+      <h3>Login to continue</h3>
+      <div className="bg-gray-100 rounded-lg p-7 flex flex-col ">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
             <FormField
               control={form.control}
               name="email"
