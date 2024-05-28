@@ -70,15 +70,39 @@ const Signup = () => {
     formState: { errors },
   } = form;
 
-  // // Define your onSubmit function
-  // const onSubmit = (data) => {
-  //   console.log("Form data:", data);
-  // };
-
   // Defining the submit handler
   const onSubmit = async (values: z.infer<typeof signupFormSchema>) => {
-    //on Submit logic
-    console.log(values);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_DEPLOYED_BACKEND_URI}/api/auth/createuser`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phone: values.phone,
+            password: values.password,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      //PUSH USER TO THE LANDING PAGE
+
+      const data = await response.json();
+      console.log("Signup successful:", data);
+      // Handle success (e.g., show a success message, redirect to login page, etc.)
+    } catch (error) {
+      console.error("Signup failed:", error);
+      // Handle error (e.g., show an error message)
+    }
   };
   return (
     <div className="container px-5 py-4 mx-auto flex flex-wrap flex-col items-center justify-center">
@@ -173,19 +197,6 @@ const Signup = () => {
                 </FormItem>
               )}
             />
-            {/* <FormField
-              control={control}
-              name="acceptTerms"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Checkbox {...field} />
-                  </FormControl>
-                  <FormLabel>Accept Terms and Conditions</FormLabel>
-                  <FormMessage>{errors.acceptTerms?.message}</FormMessage>
-                </FormItem>
-              )}
-            /> */}
             <Button type="submit">Sign Up</Button>
             <FormDescription>
               Already have an account?{" "}
