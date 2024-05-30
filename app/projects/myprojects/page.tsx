@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface Project {
   _id: string;
+  projectId: string;
   projectName: string;
   creatorsId: string;
   creatorsFirstName: string;
@@ -13,9 +15,9 @@ interface Project {
 const MyProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [error, setError] = useState(null);
-  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
+    const userId = localStorage.getItem("userId");
     const fetchProjects = async () => {
       try {
         const response = await fetch(
@@ -47,10 +49,12 @@ const MyProjects = () => {
             {projects &&
               projects.map((project) => (
                 <li
-                  key={project._id}
+                  key={project.projectId}
                   className="p-2 bg-purple-100 text-purple-700 rounded-lg shadow-sm hover:bg-purple-200"
                 >
-                  {project.projectName}
+                  <Link href={`/projects/project/${project.projectId}`}>
+                    <h1 className="block">{project.projectName}</h1>
+                  </Link>
                 </li>
               ))}
           </ul>
