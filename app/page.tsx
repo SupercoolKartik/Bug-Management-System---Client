@@ -28,19 +28,19 @@ export default function Home() {
             </p>
           </div>
         </Link>
-
-        <div className="group rounded-lg border border-transparent px-5 py-6 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 /*flex flex-col justify-center items-center*/">
-          <h2 className="mb-3 text-2xl font-semibold">
-            Tickets{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            View all the tickets you are assigned to or have assigned.
-          </p>
-          {/* //--------- Link to Tickets page is to be created */}
-        </div>
+        <Link href="tickets/mytickets">
+          <div className="group rounded-lg border border-transparent px-5 py-6 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30 /*flex flex-col justify-center items-center*/">
+            <h2 className="mb-3 text-2xl font-semibold">
+              Tickets{" "}
+              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                -&gt;
+              </span>
+            </h2>
+            <p className="m-0 max-w-[30ch] text-sm opacity-50">
+              View all the tickets you are assigned to or have assigned.
+            </p>
+          </div>
+        </Link>
       </div>
     </main>
   );
