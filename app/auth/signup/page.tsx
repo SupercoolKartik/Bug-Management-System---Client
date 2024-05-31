@@ -101,6 +101,8 @@ const Signup = () => {
       const responseData = await response.json();
       console.log("Signup successful:", responseData);
       localStorage.setItem("userId", responseData.userId);
+      localStorage.setItem("firstName", responseData.firstName);
+      localStorage.setItem("lastName", responseData.lastName);
       return router.push(`/`, { scroll: false });
       // Handle success (e.g., show a success message, redirect to login page, etc.)
     } catch (error) {

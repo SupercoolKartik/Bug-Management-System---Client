@@ -58,10 +58,18 @@ const Product = ({ params }: { params: { projectId: string } }) => {
   return (
     <div className="flex flex-col md:flex-row bg-gray-50 p-6 rounded-lg shadow-md">
       <div className="details md:w-1/2 p-4 bg-white rounded-lg shadow-md mb-4 md:mb-0 md:mr-4">
-        <h1 className="text-3xl font-bold text-purple-700 mb-2">
-          {projectData.projectName}
+        <h1>
+          Project Name:{" "}
+          <span className="text-3xl font-bold text-purple-700 mb-2">
+            {projectData.projectName}
+          </span>
         </h1>
-        <p className="text-purple-600 mb-4">{projectData.projectDescription}</p>
+        <p>
+          Description:{" "}
+          <span className="text-purple-600 mb-4">
+            {projectData.projectDescription}
+          </span>
+        </p>
         <p className="text-purple-500">
           Creator: {projectData.creatorsFirstName}{" "}
           {projectData.creatorsLastName}

@@ -62,6 +62,8 @@ const Login = () => {
         // Navigate to the Landing Page
         console.log("Logged in Successfully!");
         localStorage.setItem("userId", responseData.userId);
+        localStorage.setItem("firstName", responseData.firstName);
+        localStorage.setItem("lastName", responseData.lastName);
         return router.push(`/`, { scroll: false });
       } else {
         // Handle server error messages
