@@ -112,19 +112,27 @@ const Signup = () => {
   };
   return (
     <div className="container px-5 py-4 mx-auto flex flex-wrap flex-col items-center justify-center">
-      <h1 className="font-bold">Bug Management System</h1>
-      <h3>Sign In to continue</h3>
+      <h1 className="font-bold text-purple-800 text-3xl mb-4">
+        Bug Management System
+      </h1>
+      <h3 className="text-purple-600">Sign In to continue</h3>
       <div className="bg-gray-100 rounded-lg p-7 flex flex-col mt-10 md:mt-0">
         <Form {...form}>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>First Name :</FormLabel>
+                  <FormLabel className="text-purple-800">
+                    First Name :
+                  </FormLabel>
                   <FormControl>
-                    <Input placeholder="First Name" {...field} />
+                    <Input
+                      placeholder="First Name"
+                      {...field}
+                      className="border-purple-400"
+                    />
                   </FormControl>
                   <FormMessage>{errors.firstName?.message}</FormMessage>
                 </FormItem>
@@ -135,9 +143,13 @@ const Signup = () => {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Last Name :</FormLabel>
+                  <FormLabel className="text-purple-800">Last Name :</FormLabel>
                   <FormControl>
-                    <Input placeholder="Last Name" {...field} />
+                    <Input
+                      placeholder="Last Name"
+                      {...field}
+                      className="border-purple-400"
+                    />
                   </FormControl>
                   <FormMessage>{errors.lastName?.message}</FormMessage>
                 </FormItem>
@@ -148,9 +160,13 @@ const Signup = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email :</FormLabel>
+                  <FormLabel className="text-purple-800">Email :</FormLabel>
                   <FormControl>
-                    <Input placeholder="example@mail.com" {...field} />
+                    <Input
+                      placeholder="example@mail.com"
+                      {...field}
+                      className="border-purple-400"
+                    />
                   </FormControl>
                   <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>
@@ -161,9 +177,13 @@ const Signup = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone :</FormLabel>
+                  <FormLabel className="text-purple-800">Phone :</FormLabel>
                   <FormControl>
-                    <Input placeholder="0123456789" {...field} />
+                    <Input
+                      placeholder="0123456789"
+                      {...field}
+                      className="border-purple-400"
+                    />
                   </FormControl>
                   <FormMessage>{errors.phone?.message}</FormMessage>
                 </FormItem>
@@ -174,12 +194,13 @@ const Signup = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password :</FormLabel>
+                  <FormLabel className="text-purple-800">Password :</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       placeholder="************"
                       {...field}
+                      className="border-purple-400"
                     />
                   </FormControl>
                   <FormMessage>{errors.password?.message}</FormMessage>
@@ -191,24 +212,32 @@ const Signup = () => {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm Password :</FormLabel>
+                  <FormLabel className="text-purple-800">
+                    Confirm Password :
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       placeholder="************"
                       {...field}
+                      className="border-purple-400"
                     />
                   </FormControl>
                   <FormMessage>{errors.confirmPassword?.message}</FormMessage>
                 </FormItem>
               )}
             />
-            <Button type="submit">Sign Up</Button>
-            <FormDescription>
+            <Button
+              type="submit"
+              className="bg-purple-600 hover:bg-purple-700 text-white"
+            >
+              Sign Up
+            </Button>
+            <FormDescription className="text-purple-800">
               Already have an account?{" "}
               <Link
                 href="login"
-                className="text-underline text-purple-700 hover:text-purple-900"
+                className="text-purple-700 hover:text-purple-900"
               >
                 Login
               </Link>

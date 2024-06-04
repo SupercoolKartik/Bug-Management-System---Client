@@ -75,20 +75,29 @@ const Login = () => {
     }
   };
   return (
-    <div className="h-screen container mx-auto flex flex-wrap flex-col items-center justify-center">
-      <h1 className="font-bold absolute top-2">Bug Management System</h1>
-      <h3>Login to continue</h3>
-      <div className="bg-gray-100 rounded-lg p-7 flex flex-col ">
+    <div className="h-screen container mx-auto flex flex-wrap flex-col items-center justify-center bg-purple-50">
+      <h1 className="font-bold text-purple-800 absolute top-4 text-3xl">
+        Bug Management System
+      </h1>
+      <h3 className="text-purple-700 mb-4">Login to continue</h3>
+      <div className="bg-white shadow-md rounded-lg p-8 flex flex-col items-center w-full max-w-md">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 w-full"
+          >
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email :</FormLabel>
+                  <FormLabel className="text-purple-800">Email :</FormLabel>
                   <FormControl>
-                    <Input placeholder="example@mail.com" {...field} />
+                    <Input
+                      placeholder="example@mail.com"
+                      {...field}
+                      className="w-full p-2 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -99,21 +108,30 @@ const Login = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password :</FormLabel>
+                  <FormLabel className="text-purple-800">Password :</FormLabel>
                   <FormControl>
-                    <Input placeholder="************" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="************"
+                      {...field}
+                      className="w-full p-2 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    />
                   </FormControl>
-
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Login</Button>
-            <FormDescription>
+            <Button
+              type="submit"
+              className="w-full py-2 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition-colors"
+            >
+              Login
+            </Button>
+            <FormDescription className="text-center mt-4">
               Don't have an account?{" "}
               <Link
                 href="signup"
-                className="text-underline text-purple-700 hover:text-purple-900"
+                className="text-purple-700 hover:text-purple-900 underline"
               >
                 Signup
               </Link>

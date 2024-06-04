@@ -73,15 +73,6 @@ const MyProjects = () => {
     }
   };
 
-  // Defining your form with useForm
-  const form = useForm<z.infer<typeof createProjectSchema>>({
-    resolver: zodResolver(createProjectSchema),
-    defaultValues: {
-      projectName: "",
-      projectDescription: "",
-    },
-  });
-
   const addUserToProject = async (
     userProjectData: {
       projectId: string;
@@ -109,6 +100,15 @@ const MyProjects = () => {
       console.error("Error adding users to project:", error);
     }
   };
+
+  // Defining your form with useForm
+  const form = useForm<z.infer<typeof createProjectSchema>>({
+    resolver: zodResolver(createProjectSchema),
+    defaultValues: {
+      projectName: "",
+      projectDescription: "",
+    },
+  });
 
   // Defining the submit handler
   const onSubmit = async (values: z.infer<typeof createProjectSchema>) => {
