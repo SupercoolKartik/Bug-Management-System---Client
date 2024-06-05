@@ -115,7 +115,7 @@ const Signup = () => {
       <h1 className="font-bold text-purple-800 text-3xl mb-4">
         Bug Management System
       </h1>
-      <h3 className="text-purple-600">Sign In to continue</h3>
+      <h3 className="text-purple-600 mb-2">Sign In to continue</h3>
       <div className="bg-gray-100 rounded-lg p-7 flex flex-col mt-10 md:mt-0">
         <Form {...form}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
